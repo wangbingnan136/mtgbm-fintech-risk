@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "python-compile-on-save",
+      "description": "Compile the LightGBM Python package after a Python source file changes.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.py$",
+      "action": {
+        "type": "command",
+        "command": "python3 -m compileall -q python-package/lightgbm"
+      },
+      "timeout": 120,
+      "enabled": true
+    }
+  ]
+}

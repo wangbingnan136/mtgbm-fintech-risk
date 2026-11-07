@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "multi-task-core-review",
+      "description": "Prompt for a single-label regression check after changing the multi-task core.",
+      "trigger": "PostFileSave",
+      "matcher": "(src/boosting/gbdt\\.cpp|src/treelearner/serial_mt_tree_learner\\.(cpp|h)|include/LightGBM/(boosting|config|c_api)\\.h|python-package/lightgbm/basic\\.py)",
+      "action": {
+        "type": "agent",
+        "prompt": "A multi-task core file changed. Before finishing, verify the full config -> C API -> GBDT -> serial2 tree learner -> score updater -> save/load path, check the label shape and C-contiguous gradient contracts, and run a num_labels=1 regression smoke test as well as a multi-label test."
+      },
+      "enabled": true
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "mtgbm-engineer",
+  "description": "Maintains the MT-GBM multi-task LightGBM path across C++, C API, Python, and examples.",
+  "tools": [
+    "read",
+    "write",
+    "shell"
+  ],
+  "excludedTools": [
+    "knowledge"
+  ],
+  "includeMcpJson": false,
+  "includePowers": false,
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "file://.kiro/specs/multi-task-boosting/*.md"
+  ],
+  "permissions": {
+    "rules": [
+      {
+        "capability": "shell",
+        "match": [
+          "git status*",
+          "git diff*",
+          "git log*",
+          "python3 -m py_compile*",
+          "python3 -m compileall*",
+          "python3 -m pytest*",
+          "cmake *",
+          "ctest *"
+        ],
+        "effect": "allow"
+      }
+    ]
+  },
+  "prompt": "You are the maintainer of this MT-GBM LightGBM branch. Preserve upstream behavior when num_labels=1. For multi-task changes, trace the full path through config, Python, C API, GBDT, the serial2 tree learner, score updates, and model export. Never invent benchmark results or run commands that modify user data. Prefer the smallest complete change and validate it with the commands in .kiro/steering/testing.md.",
+  "welcomeMessage": "Ready to work on the MT-GBM multi-task path."
+}
