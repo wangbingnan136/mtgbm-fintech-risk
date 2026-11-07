@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MT-GBM multi-task fintech risk demonstration">
+  <link rel="icon" href="data:,">
+  <title>MT-GBM Fintech Risk Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#">
+      <span class="brand-mark">MT</span>
+      <span>
+        <strong>MT-GBM</strong>
+        <small>Fintech Risk Lab</small>
+      </span>
+    </a>
+    <div class="header-meta">
+      <span class="status-dot"></span>
+      <span>Shared structure / two task heads</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Kiroween 2026 / Frankenstein</p>
+        <h1>One tree structure.<br><em>Two risk questions.</em></h1>
+        <p class="lede">
+          A transaction can be suspicious for different reasons. MT-GBM learns
+          shared splits for card fraud and account takeover, then recalculates
+          leaf outputs for each task.
+        </p>
+      </div>
+      <div class="hero-diagram" aria-label="Shared structure with two task outputs">
+        <div class="diagram-root">JOINT<br>OBJECTIVE</div>
+        <div class="diagram-stem"></div>
+        <div class="diagram-branches">
+          <div class="diagram-task">
+            <span>01</span>
+            Card fraud
+          </div>
+          <div class="diagram-task">
+            <span>02</span>
+            Account takeover
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-grid">
+      <form class="panel input-panel" id="risk-form">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Transaction context</p>
+            <h2>Risk controls</h2>
+          </div>
+          <div class="button-row">
+            <button class="ghost-button" type="button" id="normal-example">Normal</button>
+            <button class="ghost-button" type="button" id="suspicious-example">Suspicious</button>
+          </div>
+        </div>
+        <div class="field-grid" id="field-grid"></div>
+      </form>
+
+      <section class="results-column" aria-live="polite">
+        <article class="panel score-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Live inference</p>
+              <h2>Risk readout</h2>
+            </div>
+            <span class="decision-chip" id="decision-chip">Calculating</span>
+          </div>
+
+          <div class="task-scores" id="task-scores"></div>
+
+          <div class="flags-block">
+            <div class="flags-title">Visible context flags</div>
+            <div class="flag-list" id="flag-list"></div>
+            <p class="fine-print">
+              These flags describe the entered values. They are not a per-row
+              SHAP explanation.
+            </p>
+          </div>
+        </article>
+
+        <article class="panel metrics-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Held-out evaluation</p>
+              <h2>Architecture comparison</h2>
+            </div>
+            <span class="metric-note" id="sample-note"></span>
+          </div>
+          <div id="metrics"></div>
+          <p class="fine-print">
+            Synthetic data only. AUC values come from the generated
+            <code>model.json</code>; they are not production-performance claims.
+          </p>
+        </article>
+      </section>
+    </section>
+
+    <section class="method-strip">
+      <article>
+        <span>01</span>
+        <h3>Joint gradients</h3>
+        <p>Tree splits are selected from a weighted objective across both tasks.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Task-specific leaves</h3>
+        <p>Each task recalculates leaf values from its own gradients and Hessians.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Browser inference</h3>
+        <p>Task models exported by MT-GBM run directly as compact tree ensembles.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>MT-GBM Fintech Risk Lab</span>
+    <span>Synthetic data / research demonstration</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
