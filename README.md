@@ -1,8 +1,11 @@
 # MT-GBM: Multi-Task LightGBM for Fintech Risk
 
-MT-GBM is a LightGBM 3.3.2.99 branch that learns a shared tree structure across
-multiple labels and recalculates leaf outputs for each task. The included
-fintech demo applies the idea to two related questions:
+MT-GBM Fintech Risk Lab is a fraud-risk application built on top of
+[MT-GBM](https://github.com/antmachineintelligence/MTGBM_newest), the
+open-source multi-task LightGBM fork published by Ant Machine Intelligence
+(MIT license). MT-GBM learns a shared tree structure across multiple labels and
+recalculates leaf outputs for each task. This project applies it to two related
+fintech questions:
 
 - Card-not-present payment fraud.
 - Account-takeover risk.
@@ -15,9 +18,9 @@ project-specific agent, steering, hooks, and spec are committed under
 
 ![MT-GBM Fintech Risk Lab](demo/web/screenshot-desktop.png)
 
-## What is different
+## How MT-GBM differs from LightGBM
 
-Standard gradient boosting trains one objective at a time. MT-GBM adds a
+Standard gradient boosting trains one objective at a time. Upstream MT-GBM adds a
 single-machine multi-task path that:
 
 1. Accepts a label matrix through the `num_labels` parameter.
@@ -113,11 +116,22 @@ The repository includes:
 
 ## Originality and disclosure
 
-MT-GBM builds on the open-source LightGBM project at version 3.3.2.99 under the
-MIT license. Standard LightGBM source code is pre-existing upstream work and is
-not claimed as new. The multi-task extension, Kiro project context, and fintech
-demo are documented in this repository. See
-[`UPSTREAM_README.md`](UPSTREAM_README.md) for the original LightGBM README.
+This repository starts from
+[antmachineintelligence/MTGBM_newest](https://github.com/antmachineintelligence/MTGBM_newest)
+(MIT), which is itself a fork of LightGBM 3.3.2.99 (MIT). The LightGBM code and
+the MT-GBM multi-task training implementation, including its examples, are
+pre-existing open-source work and are not claimed as new.
+
+New work for Kiroween 2026:
+
+- Kiro project context in `.kiro/`: custom agent, steering, hooks, and spec.
+- Build repair for current ARM64 macOS, including a compile fix in
+  `src/boosting/gbdt_model_text.cpp`.
+- The synthetic fintech dataset, training/export script, single-task baseline
+  comparison, and browser tree evaluator in `demo/`.
+- The responsive web application, documentation, and submission materials.
+
+See [`UPSTREAM_README.md`](UPSTREAM_README.md) for the original LightGBM README.
 
 ## Limitations
 
