@@ -12,6 +12,8 @@ fintech questions:
 
 Live demo: https://wangbingnan136.github.io/mtgbm-fintech-risk/
 
+Demo video: https://www.youtube.com/watch?v=idIsAhGGOpM
+
 The project was developed with Kiro as an agentic development environment. Its
 project-specific agent, steering, hooks, and spec are committed under
 [`.kiro`](.kiro).
