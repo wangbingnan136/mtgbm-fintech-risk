@@ -7,6 +7,8 @@ fintech demo applies the idea to two related questions:
 - Card-not-present payment fraud.
 - Account-takeover risk.
 
+Live demo: https://wangbingnan136.github.io/mtgbm-fintech-risk/
+
 The project was developed with Kiro as an agentic development environment. Its
 project-specific agent, steering, hooks, and spec are committed under
 [`.kiro`](.kiro).
